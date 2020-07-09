@@ -12,5 +12,6 @@ jobs:
         shell: pwsh
         run: New-Item -Type File -Path thingshappened.txt
       - name: test for file
+        shell: pwsh
         run: |
           dir -recurse
