@@ -1,0 +1,16 @@
+name: Pipeline test
+on:
+    push:
+      branches:
+      - "master"
+jobs:
+  Pipeline-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: create file
+        shell: pwsh
+        run: New-Item -Type File -Path thingshappened.txt
+      - name: test for file
+        run: |
+          dir -recurse
