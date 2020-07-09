@@ -13,5 +13,7 @@ jobs:
         run: New-Item -Type File -Path thingshappened.txt
       - name: test for file
         shell: pwsh
+        if: ${{ test-path thingshappened.txt }}
         run: |
+          write-host "things happened!!"
           dir -recurse
