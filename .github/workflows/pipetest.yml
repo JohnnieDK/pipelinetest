@@ -8,10 +8,11 @@ jobs:
     container: linuxbrew/brew:latest
 
     steps:
-    - uses: actions/checkout@v1
     - name: install terraform/grunt
+    - uses: actions/checkout@v1
       run: |
         brew install terraform terragrunt
+
     - name: terraform fmt
       id: terraform
       run: terraform fmt -check -recursive -diff -no-color
