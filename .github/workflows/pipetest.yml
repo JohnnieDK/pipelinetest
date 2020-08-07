@@ -16,10 +16,10 @@ jobs:
         brew install terraform terragrunt
 
     - name: terraform fmt
-      id: fmt
+      id: terraform
       run: terraform fmt -check -recursive -diff -no-color
 
     - name: terragrunt hclfmt
-      id: fmt
+      id: grunt
       run: |
         terragrunt hclfmt --terragrunt-check
