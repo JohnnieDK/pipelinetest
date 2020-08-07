@@ -4,22 +4,21 @@ on: [push]
 
 jobs:
   lint-tf:
-
     runs-on: ubuntu-latest
-
     container: linuxbrew/brew:latest
 
     steps:
-    - uses: actions/checkout@v1
     - name: install terraform/grunt
+    - uses: actions/checkout@v1
       run: |
         brew install terraform terragrunt
 
-    - name: terraform fmt
+
+    - name: Lint Terraform
       id: terraform
       run: terraform fmt -check -recursive -diff -no-color
 
-    - name: terragrunt hclfmt
+    - name: Lint Terragrunt
       id: grunt
       run: |
         terragrunt hclfmt --terragrunt-check
