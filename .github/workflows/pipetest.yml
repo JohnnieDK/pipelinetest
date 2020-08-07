@@ -8,17 +8,15 @@ jobs:
     container: linuxbrew/brew:latest
 
     steps:
-    - name: install terraform/grunt
     - uses: actions/checkout@v1
+    - name: install terraform/grunt
       run: |
         brew install terraform terragrunt
-
-
-    - name: Lint Terraform
+    - name: terraform fmt
       id: terraform
       run: terraform fmt -check -recursive -diff -no-color
 
-    - name: Lint Terragrunt
+    - name: terragrunt hclfmt
       id: grunt
       run: |
         terragrunt hclfmt --terragrunt-check
