@@ -1,9 +1,9 @@
-name: CI
+name: Linting
 
 on: [push]
 
 jobs:
-  build:
+  lint-tf:
 
     runs-on: ubuntu-latest
 
@@ -14,3 +14,12 @@ jobs:
     - name: install terraform/grunt
       run: |
         brew install terraform terragrunt
+
+    - name: terraform fmt
+      id: fmt
+      run: terraform fmt -check -recursive -diff -no-color
+
+    - name: terragrunt hclfmt
+      id: fmt
+      run: |
+        terragrunt hclfmt --terragrunt-check
