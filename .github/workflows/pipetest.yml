@@ -18,11 +18,11 @@ jobs:
         sudo unzip terraform_${{ env.TERRAFORM_VERSION }}_linux_amd64.zip -d /bin/
         terraform version
 
-        sudo wget https://github.com/gruntwork-io/terragrunt/releases/download/v${{ env.TERRAGRUNT_VERSION }}/terragrunt_linux_amd64 -O /bin/terragrunt
+        sudo wget -q https://github.com/gruntwork-io/terragrunt/releases/download/v${{ env.TERRAGRUNT_VERSION }}/terragrunt_linux_amd64 -O /bin/terragrunt
         sudo chmod a+x /bin/terragrunt
         terragrunt --version
 
-    - name: terragorm fmt
+    - name: terraform fmt
       run: |
         terraform fmt -check -recursive -diff -no-color
 
