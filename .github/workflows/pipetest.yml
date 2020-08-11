@@ -4,29 +4,28 @@ on: [push]
 
 env:
   TERRAFORM_VERSION: '0.12.29'
+  TERRAGRUNT_VERSION: '0.23.33'
 
 jobs:
   lint-tf:
     runs-on: ubuntu-latest
-    container: linuxbrew/brew:latest
 
     steps:
     - uses: actions/checkout@v1
-    - name: install terraform/grunt
+    - name: installs
       run: |
-        brew install terragrunt
-
-    - name: terraform fmt
-      id: terraform
-      run: |
-        apt update
-        apt install wget unzip
         wget -q https://releases.hashicorp.com/terraform/${{ env.TERRAFORM_VERSION }}/terraform_${{ env.TERRAFORM_VERSION }}_linux_amd64.zip
         unzip terraform_${{ env.TERRAFORM_VERSION }}_linux_amd64.zip -d /bin/
         terraform version
+
+        wget https://github.com/gruntwork-io/terragrunt/releases/download/v${{ env.TERRAGRUNT_VERSION }}/terragrunt_linux_amd64 -O /bin/terragrunt
+        chmod a+x /bin/terragrunt
+        terragrunt --version
+
+    - name: terragorm fmt
+      run: |
         terraform fmt -check -recursive -diff -no-color
 
     - name: terragrunt hclfmt
-      id: grunt
       run: |
         terragrunt hclfmt --terragrunt-check
