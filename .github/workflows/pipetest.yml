@@ -17,10 +17,10 @@ jobs:
       id: terraform
       run: |
         apt update
-        apt install wget
-        mkdir ~/terraform
-        wget https://releases.hashicorp.com/terraform/0.12.29/terraform_0.12.29_linux_amd64.zip -p ~/terraform
-        unzip ~/terraform/terraform_0.12.29_linux_amd64.zip /bin/
+        apt install wget unzip
+        mkdir terraform
+        wget -q https://releases.hashicorp.com/terraform/0.12.29/terraform_0.12.29_linux_amd64.zip
+        unzip terraform_0.12.29_linux_amd64.zip -d /bin/
         terraform version
         terraform fmt -check -recursive -diff -no-color
 
