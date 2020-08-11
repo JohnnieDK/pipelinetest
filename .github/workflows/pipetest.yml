@@ -29,8 +29,8 @@ jobs:
         apt update
         apt install wget unzip
         mkdir terraform
-        wget -q https://releases.hashicorp.com/terraform/${{TERRAFORM_VERSION}}/terraform_${{TERRAFORM_VERSION}}_linux_amd64.zip
-        unzip terraform_${{TERRAFORM_VERSION}}_linux_amd64.zip -d /bin/
+        wget -q https://releases.hashicorp.com/terraform/${{ env.TERRAFORM_VERSION }}/terraform_${{ env.TERRAFORM_VERSION }}_linux_amd64.zip
+        unzip terraform_${{ env.TERRAFORM_VERSION }}_linux_amd64.zip -d /bin/
         terraform version
         terraform fmt -check -recursive -diff -no-color
 
