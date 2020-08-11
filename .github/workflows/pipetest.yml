@@ -2,6 +2,9 @@ name: Linting
 
 on: [push]
 
+env:
+  TERRAFORM_VERSION: '0.12.29'
+
 jobs:
   lint-tf:
     runs-on: ubuntu-latest
@@ -23,8 +26,6 @@ jobs:
 
     - name: terraform fmt
       id: terraform
-      env:
-        TERRAFORM_VERSION: '0.12.29'
       run: |
         apt update
         apt install wget unzip
