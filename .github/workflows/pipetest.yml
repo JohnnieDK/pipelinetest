@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: install terraform/grunt
       run: |
-        brew install terraform terragrunt
+        brew install terragrunt
 
     - name: terraform fmt
       id: terraform
