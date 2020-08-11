@@ -2,8 +2,7 @@ name: Linting
 
 on: [push]
 
-env:
-  terraformVersion = 0.12.29
+
 
 jobs:
   lint-tf:
@@ -11,6 +10,7 @@ jobs:
     container: linuxbrew/brew:latest
 
     steps:
+      env: terraformVersion = 0.12.29
     - uses: actions/checkout@v1
     - name: install terraform/grunt
       run: |
