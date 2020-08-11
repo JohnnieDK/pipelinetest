@@ -19,6 +19,7 @@ jobs:
       # This ensures we get the full output if any errors occurs.
       env:
         DOCKER_IMAGE: 'odin-sitecore-xm-cd:9.3.0'
+      run: ls
 
     - name: terraform fmt
       id: terraform
