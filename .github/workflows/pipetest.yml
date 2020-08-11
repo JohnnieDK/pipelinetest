@@ -8,8 +8,8 @@ jobs:
     container: linuxbrew/brew:latest
 
     steps:
-    - name: install terraform/grunt
     - uses: actions/checkout@v1
+    - name: install terraform/grunt
       run: |
         brew install terraform terragrunt
 
